@@ -1,0 +1,19 @@
+[package]
+name = "rip"
+version = "0.1.0"
+authors = ["Kevin Cotugno <kevin@kevincotugno.com>"]
+
+[[bin]]
+name = "rip"
+path = "src/bin/client.rs"
+
+[[bin]]
+name = "rip-server"
+path = "src/bin/server.rs"
+
+[lib]
+name = "rip"
+path = "src/rip/lib.rs"
+
+[dependencies]
+clap = "~2.32"
