@@ -2,7 +2,7 @@ use std::io;
 use std::net::{IpAddr, Ipv4Addr, Ipv6Addr, SocketAddr, UdpSocket};
 use std::time::Duration;
 
-pub const NAME: &str = "rip";
+pub const NAME: &str = "ripper";
 pub const VERSION: &str = "0.1.0";
 pub const ABOUT: &str = "Rip is a simple client/server to retrieving a public IP via UDP.";
 pub const AUTHOR: &str = "Kevin Cotugno <kevin@kevincotugno.com>";

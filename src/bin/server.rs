@@ -1,14 +1,14 @@
 extern crate clap;
 use clap::{App, Arg, ArgMatches};
 
-const NAME: &str = "rip-server";
+const NAME: &str = "ripper-server";
 
 fn main() {
-    let port = rip::DEFAULT_PORT.to_string();
+    let port = ripper::DEFAULT_PORT.to_string();
     let args = App::new(NAME)
-        .version(rip::VERSION)
-        .author(rip::AUTHOR)
-        .about(rip::ABOUT)
+        .version(ripper::VERSION)
+        .author(ripper::AUTHOR)
+        .about(ripper::ABOUT)
         .arg(
             Arg::with_name("port")
                 .short("p")
@@ -32,5 +32,5 @@ fn run(args: &ArgMatches) -> Result<(), String> {
         Err(_) => return Err("Port must be a valid unsigned 16bit integer".to_string()),
     };
 
-    rip::run_server(port)
+    ripper::run_server(port)
 }

@@ -4,11 +4,11 @@ use std::io::Write;
 use std::net::IpAddr;
 
 fn main() {
-    let port = rip::DEFAULT_PORT.to_string();
-    let args = App::new(rip::NAME)
-        .version(rip::VERSION)
-        .author(rip::AUTHOR)
-        .about(rip::ABOUT)
+    let port = ripper::DEFAULT_PORT.to_string();
+    let args = App::new(ripper::NAME)
+        .version(ripper::VERSION)
+        .author(ripper::AUTHOR)
+        .about(ripper::ABOUT)
         .arg(
             Arg::with_name("port")
                 .short("p")
@@ -42,10 +42,10 @@ fn run(args: &ArgMatches) -> Result<IpAddr, String> {
         Err(_) => return Err("Port must be a valid unsigned 16bit integer".to_string()),
     };
 
-    let dest = match rip::parse_socket_addr(args.value_of("host").unwrap(), port) {
+    let dest = match ripper::parse_socket_addr(args.value_of("host").unwrap(), port) {
         Ok(v) => v,
         Err(err) => return Err(err),
     };
 
-    rip::run_client(dest)
+    ripper::run_client(dest)
 }
