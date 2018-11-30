@@ -76,18 +76,14 @@ fn parse_ip(host: &str) -> Result<IpAddr, String> {
 }
 
 fn do_request(dest: SocketAddr, socket: &UdpSocket) -> Result<IpAddr, String> {
-    if socket.connect(dest).is_err() {
-        return Err(format!(
-            "Unable to connect: {}",
-            socket.take_error().unwrap().unwrap()
-        ));
+    match socket.connect(dest) {
+        Ok(_) => (),
+        Err(err) => return Err(format!("Unable to connect: {}", err)),
     }
 
-    if socket.send(&[]).is_err() {
-        return Err(format!(
-            "Failed to send request: {}",
-            socket.take_error().unwrap().unwrap()
-        ));
+    match socket.send(&[]) {
+        Ok(_) => (),
+        Err(err) => return Err(format!("Failed to send request: {}", err)),
     }
 
     let mut buf = [0; 1024];
